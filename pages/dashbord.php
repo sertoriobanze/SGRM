@@ -1,3 +1,8 @@
+<?php
+include_once "../model/userModel.php";
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,5 +13,13 @@
 <body>
     <h1>hello world 2
     </h1>
+
+    <?php
+        $um = new UserModel();
+
+        $um->addUser2("sertorio banze","123");
+    ?>
+
+
 </body>
 </html>
