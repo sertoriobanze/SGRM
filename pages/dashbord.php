@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>Home page</title>
-    <link rel="stylesheet" href="./style/dashbord.css">
+    <link rel="stylesheet" href="dashbord.css">
 </head>
 <body>
     <div class="container">
