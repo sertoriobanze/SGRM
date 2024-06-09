@@ -1,0 +1,107 @@
+*{
+    padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+
+:root{
+    --primry: rgb(38,34,100);
+    --secundry: #F7F3FF;
+    --third: #4D76FA;
+    --white: rgb(255,255,255);
+    --green: rgb(30,139,36);
+    --red: rgb(218,17,9);
+    
+}
+
+.line{
+    width: 100%;
+    gap: 20px;
+}
+
+.col{
+    width: 50%;
+    
+}
+.col1{
+    width: 100%;
+    
+}
+
+.flex{
+    display: flex;
+}
+
+.FrmContainer{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.369) 0px 0px 5px 0px;
+    width: 700px;
+    margin: auto;
+    margin-top: 100px;
+    border-radius: 10px;
+    gap: 20px;
+    padding: 20px;
+}
+
+body{
+    background-color: #F7F3FF;
+}
+
+.frmHead{
+    display: flex;
+}
+
+.btn{
+    display: flex;
+    justify-content: flex-end;
+    
+}
+.txtx{
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.col> input{
+    height: 35px;
+    outline: none;
+    border-radius: 5px;
+    border: solid 1px;
+    padding: 0px 30px;
+}
+
+.col> input:focus{
+    
+    border: var(--primry) solid 2px;
+    color: var(--primry);
+}
+
+.button{
+    padding: 10px 30px;
+    
+    
+    border: 0px;
+    border-radius: 5px;
+}
+
+.colorAdd{
+    background-color: var(--green);
+    color: var(--white);
+}
+
+.colorCance{
+background-color: var(--red);
+color: var(--white);
+}
+
+.bton>img{
+    width: 30px;
+    opacity: 0.7;
+}
+
+.bton>img:hover{
+    opacity: 1;
+}

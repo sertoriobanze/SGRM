@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home page</title>
     <link rel="stylesheet" href="dashbord.css">
+    <link rel="stylesheet" href="./componets/addFisc.css">
 </head>
 <body>
+
     <div class="container">
         <div class="sideMeno">
             <div class="logo">
@@ -75,7 +77,12 @@
             </div>
         </div>
         <div class="popup" id="popup">
-            <button onclick="closePopup()"></button>
+
+            
+
+            <?php
+            include_once "./componets/AddFisc.php"
+            ?>
         </div>
     </div>
 
