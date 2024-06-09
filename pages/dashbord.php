@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>Home page</title>
     <link rel="stylesheet" href="dashbord.css">
 </head>
@@ -22,7 +21,7 @@
                     <span>Add User</span>
                 </div>
                 <div class="button">
-                    <span>home</span>
+                    <span>Home</span>
                 </div>
             </div>
         </div>
@@ -44,64 +43,53 @@
                 <div class="card">
                     <div class="cardheder">
                         <div class="icon"></div>
-                        <div class="name">incom</div>
+                        <div class="name">Income</div>
                     </div>
                     <div class="money">898</div>
-                    <div class="desc">total</div>
+                    <div class="desc">Total</div>
                 </div>
                 <div class="card">
                     <div class="cardheder line">
                         <div class="icon"></div>
-                        <div class="name">incom</div>
+                        <div class="name">Income</div>
                     </div>
                     <div class="money">390</div>
-                    <div class="desc">total vendedores</div>
+                    <div class="desc">Total Vendedores</div>
                 </div>
                 <div class="card">
                     <div class="cardheder">
                         <div class="icon"></div>
-                        <div class="name">incom</div>
+                        <div class="name">Income</div>
                     </div>
                     <div class="money">700</div>
-                    <div class="desc">total</div>
+                    <div class="desc">Total</div>
                 </div>
                 <div class="card">
                     <div class="cardheder">
                         <div class="icon"></div>
-                        <div class="name">incom</div>
+                        <div class="name">Income</div>
                     </div>
                     <div class="money">1021</div>
-                    <div class="desc">total</div>
+                    <div class="desc">Total</div>
                 </div>
-                
             </div>
-
-
-
-
         </div>
         <div class="popup" id="popup">
-
-   
+            <button onclick="closePopup()"></button>
         </div>
-     
     </div>
 
-
-
-    <script src="js/dash.js">
-    
-
-        function OpenPopup(){
-            // let popup = window.document.getElementById("popup");
-            // popup.style.display = "flex";
-            alert("esta pegando")
+    <script>
+        function OpenPopup() {
+            // alert("esta pegando");
+            let popup = document.getElementById("popup");
+            popup.style.display = "flex"
         }
-        function closePopup(){
+
+        function closePopup() {
             let popup = document.getElementById("popup");
             popup.style.display = "none";
         }
-
     </script>
 </body>
 </html>

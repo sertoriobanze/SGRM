@@ -118,6 +118,7 @@ justify-content: space-between;
     padding: 20px;
     border-radius: 5px;
     gap: 10px;
+    box-shadow: rgba(0, 0, 0, 0.391) 0px 0px 5px 0px;
 }
 .cardheder{
     display: flex;
