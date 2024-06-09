@@ -15,7 +15,7 @@
                 <span>SISTEMA DE GESTAO</span>
             </div>
             <div class="contbtns">
-                <div class="button">
+                <div class="button" onclick="OpenPopup()">
                     <span>Home</span>
                 </div>
                 <div class="button">
@@ -80,10 +80,28 @@
 
 
         </div>
-    </div>
+        <div class="popup" id="popup">
 
    
+        </div>
+     
+    </div>
 
 
+
+    <script src="js/dash.js">
+    
+
+        function OpenPopup(){
+            // let popup = window.document.getElementById("popup");
+            // popup.style.display = "flex";
+            alert("esta pegando")
+        }
+        function closePopup(){
+            let popup = document.getElementById("popup");
+            popup.style.display = "none";
+        }
+
+    </script>
 </body>
 </html>
