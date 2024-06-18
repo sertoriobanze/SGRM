@@ -17,13 +17,13 @@
             </div>
             <div class="contbtns">
                 <div class="button" onclick="OpenPopup()">
-                    <span>Home</span>
+                    <span>Adcionar Fiscais</span>
                 </div>
                 <div class="button">
-                    <span>Add User</span>
+                    <span>Adcionar Vendedores</span>
                 </div>
                 <div class="button">
-                    <span>Home</span>
+                    <span>Settings</span>
                 </div>
             </div>
         </div>
@@ -32,7 +32,7 @@
                 <div class="well">
                     <h1 class="welcome">Welcome Sertorio</h1>
                     <span class="weldc">
-                        Systema de gestao de seila
+                        Sistema de gestao de seila
                     </span>
                 </div>
                 <div class="info">
@@ -45,15 +45,15 @@
                 <div class="card">
                     <div class="cardheder">
                         <div class="icon"></div>
-                        <div class="name">Income</div>
+                        <div class="name">Valor</div>
                     </div>
-                    <div class="money">898</div>
-                    <div class="desc">Total</div>
+                    <div class="money">898 Mzn</div>
+                    <div class="desc">Total Valor</div>
                 </div>
                 <div class="card">
                     <div class="cardheder line">
                         <div class="icon"></div>
-                        <div class="name">Income</div>
+                        <div class="name">Vendedores</div>
                     </div>
                     <div class="money">390</div>
                     <div class="desc">Total Vendedores</div>
@@ -61,17 +61,17 @@
                 <div class="card">
                     <div class="cardheder">
                         <div class="icon"></div>
-                        <div class="name">Income</div>
+                        <div class="name">Fiscais</div>
                     </div>
-                    <div class="money">700</div>
-                    <div class="desc">Total</div>
+                    <div class="money">100</div>
+                    <div class="desc">Total Fiscais</div>
                 </div>
                 <div class="card">
                     <div class="cardheder">
                         <div class="icon"></div>
-                        <div class="name">Income</div>
+                        <div class="name">Valor por Receber</div>
                     </div>
-                    <div class="money">1021</div>
+                    <div class="money">30,000 Mzn</div>
                     <div class="desc">Total</div>
                 </div>
             </div>
@@ -81,7 +81,7 @@
             
 
             <?php
-            include_once "./componets/AddFisc.php"
+            include_once "AddFisc.php"
             ?>
         </div>
     </div>

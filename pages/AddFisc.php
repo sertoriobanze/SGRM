@@ -7,14 +7,14 @@
     <title></title>
 </head>
 <body>
-<form action="#" method="post" class="FrmContainer">
+<form action="../includes/addFisc.inc.php" method="post" class="FrmContainer">
     <header class="line frmHead">
         <div class="col">
             <span class="txtx">Adcional Novo Fiscal</span>
         </div>
         <div class="col btn">
             <div class="bton">
-                <img src="../icons/fechar.png" alt="X">
+                <img src="./icons/fechar.png" alt="X">
             </div>
         </div>
     </header>
@@ -22,7 +22,7 @@
     <div class="line flex">
         <div class="col">
             <span>Nome</span>
-            <input type="text" name="Nome" class="line">
+            <input type="text" name="nome" class="line">
         </div>
         <div class="col">
             <span>Codigo Usuario</span>
@@ -48,9 +48,9 @@
     </div>
 
     <div class="line">
-        <div class="col">
+        <div class="col flex">
             <button class="button colorAdd" type="submit">Adcionar</button>
-            <button class="button colorCance" onclick="closePopup()">Cancelar</button>
+            <div class="button colorCance" onclick="closePopup()">Cancelar</div>
         </div>
     </div>
 </form>    

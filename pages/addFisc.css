@@ -17,6 +17,7 @@
 }
 
 .line{
+    display: flex;
     width: 100%;
     gap: 20px;
 }
@@ -79,6 +80,10 @@ body{
     color: var(--primry);
 }
 
+.gap10{
+    gap: 10px;
+}
+
 .button{
     padding: 10px 30px;
     
@@ -90,11 +95,14 @@ body{
 .colorAdd{
     background-color: var(--green);
     color: var(--white);
+    margin-right: 10px;
+    
 }
 
 .colorCance{
 background-color: var(--red);
 color: var(--white);
+
 }
 
 .bton>img{
