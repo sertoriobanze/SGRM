@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="addFisc.css">
+    <title>Adicionar Novo Vendedor</title>
+</head>
+<body>
+<form action="../includes/addCust.inc.php" method="post" class="FrmContainer">
+    <header class="line frmHead">
+        <div class="col">
+            <span class="txtx">Adicionar Novo Vendedor</span>
+        </div>
+        <div class="col btn">
+            <div class="bton">
+                <img src="./icons/fechar.png" alt="X">
+            </div>
+        </div>
+    </header>
+
+    <div class="line flex">
+        <div class="col">
+            <span>Nome</span>
+            <input type="text" id="nome" name="nome" class="line">
+        </div>
+        <div class="col">
+            <span>Apelido</span>
+            <input type="text" id="apelido" name="apelido" class="line">
+        </div>
+    </div>
+
+    <div class="line flex">
+        <div class="col">
+            <span>Tipo de Estabelecimento</span>
+            <input type="text" name="tipo" class="line">
+        </div>
+        <div class="col">
+            <span>Contacto</span>
+            <input type="text" name="contacto" class="line">
+        </div>
+        <div class="col">
+            <span>Código</span>
+            <input type="text" id="codigo" name="codigo" class="line" readonly>
+        </div>
+    </div>
+
+    <div class="line">
+        <div class="col flex">
+            <button class="button colorAdd" type="submit">Adicionar</button>
+            <div class="button colorCance" onclick="closePopup()">Cancelar</div>
+        </div>
+    </div>
+</form>    
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const nomeInput = document.getElementById('nome');
+        const apelidoInput = document.getElementById('apelido');
+        const codigoInput = document.getElementById('codigo');
+
+        function updateCodigo() {
+            const nome = nomeInput.value;
+            const apelido = apelidoInput.value;
+            if (nome && apelido) {
+                codigoInput.value = nome.charAt(0).toLowerCase() + apelido.toLowerCase();
+            } else {
+                codigoInput.value = '';
+            }
+        }
+
+        nomeInput.addEventListener('input', updateCodigo);
+        apelidoInput.addEventListener('input', updateCodigo);
+    });
+</script>
+</body>
+</html>

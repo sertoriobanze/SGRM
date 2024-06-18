@@ -4,11 +4,11 @@ include_once "../classes/dbh.php";
 
 class FiscalController extends Dbh {
     // Método protegido para adicionar um fiscal
-    protected function setFiscal($nome, $senha, $contacto, $codigoFiscal) {
+    protected function setFiscal($nome, $apelido, $senha, $contacto, $codigoFiscal) {
         try {
-            $sql = "INSERT INTO `fiscal`(`nome`, `senha`, `contacto`, `codigoFiscal`) VALUES (?, ?, ?, ?)";
+            $sql = "INSERT INTO `fiscal`(`nome`, `apelido`, `senha`, `contacto`, `codigoFiscal`) VALUES (?, ?, ?, ?, ?)";
             $stmt = $this->connect()->prepare($sql);
-            $fiscal = $stmt->execute([$nome, $senha, $contacto, $codigoFiscal]);
+            $fiscal = $stmt->execute([$nome, $apelido, $senha, $contacto, $codigoFiscal]);
 
             if ($fiscal) {
                 echo "Fiscal adicionado com sucesso!";
@@ -19,11 +19,11 @@ class FiscalController extends Dbh {
     }
 
     // Método protegido para atualizar um fiscal
-    protected function updateFiscal($id, $nome, $senha, $contacto, $codigoFiscal) {
+    protected function updateFiscal($id, $nome, $apelido, $senha, $contacto, $codigoFiscal) {
         try {
-            $sql = "UPDATE `fiscal` SET `nome` = ?, `senha` = ?, `contacto` = ?, `codigoFiscal` = ? WHERE `id` = ?";
+            $sql = "UPDATE `fiscal` SET `nome` = ?, `apelido` = ?, `senha` = ?, `contacto` = ?, `codigoFiscal` = ? WHERE `id` = ?";
             $stmt = $this->connect()->prepare($sql);
-            $result = $stmt->execute([$nome, $senha, $contacto, $codigoFiscal, $id]);
+            $result = $stmt->execute([$nome, $apelido, $senha, $contacto, $codigoFiscal, $id]);
 
             if ($result) {
                 echo "Fiscal atualizado com sucesso!";
@@ -63,7 +63,6 @@ class FiscalController extends Dbh {
         }
     }
 
-    // Métodos públicos para chamar os métodos protegidos
-
-    
+   
 }
+

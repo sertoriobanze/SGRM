@@ -134,7 +134,8 @@ justify-content: space-between;
 .cardheder> .icon{
 background-color: var(--primry);
 border-radius: 50%;
-padding: 10px;    
+padding: 10px;
+height: 10px;    
 }
 
 .money{

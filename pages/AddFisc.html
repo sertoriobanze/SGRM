@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="addFisc.css">
-    <title></title>
+    <title>Adicionar Novo Fiscal</title>
 </head>
 <body>
 <form action="../includes/addFisc.inc.php" method="post" class="FrmContainer">
     <header class="line frmHead">
         <div class="col">
-            <span class="txtx">Adcional Novo Fiscal</span>
+            <span class="txtx">Adicionar Novo Fiscal</span>
         </div>
         <div class="col btn">
             <div class="bton">
@@ -22,15 +22,14 @@
     <div class="line flex">
         <div class="col">
             <span>Nome</span>
-            <input type="text" name="nome" class="line">
+            <input type="text" id="nome" name="nome" class="line">
         </div>
         <div class="col">
-            <span>Codigo Usuario</span>
-            <input type="text" name="cdUsuario" class="line">
+            <span>Apelido</span>
+            <input type="text" id="apelido" name="apelido" class="line">
         </div>
+        
     </div>
-
-    
 
     <div class="line flex">
         <div class="col">
@@ -46,17 +45,39 @@
             <input type="text" name="ConfirmSenha" class="line">
         </div>
     </div>
+    <div class="col">
+        <span>Codigo Usuario</span>
+        <input type="text" name="cdUsuario" class="line" id="codigo" readonly>
+    </div>
 
     <div class="line">
         <div class="col flex">
-            <button class="button colorAdd" type="submit">Adcionar</button>
+            <button class="button colorAdd" type="submit">Adicionar</button>
             <div class="button colorCance" onclick="closePopup()">Cancelar</div>
         </div>
     </div>
 </form>    
 
-<script src="../js/dash.js">
-    
+<script src="../js/dash.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const nomeInput = document.getElementById('nome');
+        const apelidoInput = document.getElementById('apelido');
+        const codigoInput = document.getElementById('codigo');
+
+        function updateCodigo() {
+            const nome = nomeInput.value;
+            const apelido = apelidoInput.value;
+            if (nome && apelido) {
+                codigoInput.value ="FS_"+ apelido.toLowerCase();
+            } else {
+                codigoInput.value = '';
+            }
+        }
+
+        nomeInput.addEventListener('input', updateCodigo);
+        apelidoInput.addEventListener('input', updateCodigo);
+    });
 </script>
 </body>
 </html>

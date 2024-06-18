@@ -7,11 +7,12 @@ $cdUsuer = $_POST["cdUsuario"];
 $senha = $_POST["senha"];
 $confirmSenha = $_POST["ConfirmSenha"];
 $contacto = $_POST["contacto"];
+$apelido = $_POST["apelido"];
 
-// var_dump($nome. " ".$cdUsuer ." ". $senha." ". $confirmSenha ." ". $contacto);
+// var_dump($nome. " ".$cdUsuer ." ". $senha." ". $confirmSenha ." ". $contacto . "" . $apelido);
 
 $fiscal = new FiscalModel();
 
-$fiscal->addFiscal($nome,$senha,$contacto,$cdUsuer);
+$fiscal->addFiscal($nome,$apelido,$senha,$contacto,$cdUsuer);
 
 
