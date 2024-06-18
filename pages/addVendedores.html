@@ -12,11 +12,6 @@
         <div class="col">
             <span class="txtx">Adicionar Novo Vendedor</span>
         </div>
-        <div class="col btn">
-            <div class="bton">
-                <img src="./icons/fechar.png" alt="X">
-            </div>
-        </div>
     </header>
 
     <div class="line flex">
@@ -51,27 +46,6 @@
             <div class="button colorCance" onclick="closePopup()">Cancelar</div>
         </div>
     </div>
-</form>    
-
-<script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-        const nomeInput = document.getElementById('nome');
-        const apelidoInput = document.getElementById('apelido');
-        const codigoInput = document.getElementById('codigo');
-
-        function updateCodigo() {
-            const nome = nomeInput.value;
-            const apelido = apelidoInput.value;
-            if (nome && apelido) {
-                codigoInput.value = nome.charAt(0).toLowerCase() + apelido.toLowerCase();
-            } else {
-                codigoInput.value = '';
-            }
-        }
-
-        nomeInput.addEventListener('input', updateCodigo);
-        apelidoInput.addEventListener('input', updateCodigo);
-    });
-</script>
+</form>
 </body>
 </html>

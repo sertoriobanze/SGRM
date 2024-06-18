@@ -12,11 +12,6 @@
         <div class="col">
             <span class="txtx">Adicionar Novo Fiscal</span>
         </div>
-        <div class="col btn">
-            <div class="bton">
-                <img src="./icons/fechar.png" alt="X">
-            </div>
-        </div>
     </header>
 
     <div class="line flex">
@@ -28,7 +23,6 @@
             <span>Apelido</span>
             <input type="text" id="apelido" name="apelido" class="line">
         </div>
-        
     </div>
 
     <div class="line flex">
@@ -38,11 +32,11 @@
         </div>
         <div class="col">
             <span>Senha</span>
-            <input type="text" name="senha" class="line">
+            <input type="password" name="senha" class="line">
         </div>
         <div class="col">
             <span>Confirme a Senha</span>
-            <input type="text" name="ConfirmSenha" class="line">
+            <input type="password" name="ConfirmSenha" class="line">
         </div>
     </div>
     <div class="col">
@@ -60,16 +54,16 @@
 
 <script src="../js/dash.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', (event) => {
+    document.addEventListener('DOMContentLoaded', () => {
         const nomeInput = document.getElementById('nome');
         const apelidoInput = document.getElementById('apelido');
         const codigoInput = document.getElementById('codigo');
 
         function updateCodigo() {
-            const nome = nomeInput.value;
-            const apelido = apelidoInput.value;
+            const nome = nomeInput.value.trim();
+            const apelido = apelidoInput.value.trim();
             if (nome && apelido) {
-                codigoInput.value ="FS_"+ apelido.toLowerCase();
+                codigoInput.value = "FS_" + apelido.toLowerCase();
             } else {
                 codigoInput.value = '';
             }

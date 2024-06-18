@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="./componets/addFisc.css">
 </head>
 <body>
-
     <div class="container">
         <div class="sideMeno">
             <div class="logo">
@@ -16,13 +15,13 @@
                 <span>SISTEMA DE GESTAO</span>
             </div>
             <div class="contbtns">
-                <div class="button" onclick="OpenPopup()">
-                    <span>Adcionar Fiscais</span>
+                <div class="button" id="addFiscaisBtn">
+                    <span>Adicionar Fiscais</span>
                 </div>
-                <div class="button">
-                    <span>Adcionar Vendedores</span>
+                <div class="button" id="addVendedoresBtn">
+                    <span>Adicionar Vendedores</span>
                 </div>
-                <div class="button">
+                <div class="button" id="settingsBtn">
                     <span>Settings</span>
                 </div>
             </div>
@@ -31,9 +30,7 @@
             <div class="line header">
                 <div class="well">
                     <h1 class="welcome">Welcome Sertorio</h1>
-                    <span class="weldc">
-                        Sistema de gestao de seila
-                    </span>
+                    <span class="weldc">Sistema de gestao de seila</span>
                 </div>
                 <div class="info">
                     <span class="name">Sertorio Banze</span>
@@ -77,25 +74,62 @@
             </div>
         </div>
         <div class="popup" id="popup">
-
-            
-
-            <?php
-            include_once "AddFisc.php"
-            ?>
+            <div class="popup-content" id="popup-content">
+                <!-- Conteúdo do popup será inserido aqui -->
+            </div>
         </div>
     </div>
 
     <script>
-        function OpenPopup() {
-            // alert("esta pegando");
+        function openPopup(url) {
             let popup = document.getElementById("popup");
-            popup.style.display = "flex"
+            let popupContent = document.getElementById("popup-content");
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    popup.innerHTML = data;
+                    popup.style.display = "flex";
+                    addFormListeners(); // Adiciona os event listeners após o carregamento do conteúdo
+                })
+                .catch(error => console.error('Error loading popup content:', error));
         }
 
         function closePopup() {
             let popup = document.getElementById("popup");
             popup.style.display = "none";
+        }
+
+        function addFormListeners() {
+            const nomeInput = document.getElementById('nome');
+            const apelidoInput = document.getElementById('apelido');
+            const codigoInput = document.getElementById('codigo');
+
+            function updateCodigo() {
+                const nome = nomeInput.value.trim();
+                const apelido = apelidoInput.value.trim();
+                if (nome && apelido) {
+                    codigoInput.value = "FS_" + apelido.toLowerCase();
+                } else {
+                    codigoInput.value = '';
+                }
+            }
+
+            if (nomeInput && apelidoInput) {
+                nomeInput.addEventListener('input', updateCodigo);
+                apelidoInput.addEventListener('input', updateCodigo);
+            }
+        }
+
+        document.getElementById('addFiscaisBtn').onclick = function() {
+            openPopup('AddFisc.html');
+        }
+
+        document.getElementById('addVendedoresBtn').onclick = function() {
+            openPopup('addVendedores.html');
+        }
+
+        document.getElementById('settingsBtn').onclick = function() {
+            openPopup('settings.html');
         }
     </script>
 </body>
