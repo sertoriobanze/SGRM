@@ -100,6 +100,10 @@ if(isset($_SESSION["user"])){
                 <!-- Conteúdo do popup será inserido aqui -->
             </div>
         </div>
+        <div class="content" id="tables">
+            <!-- as tableas virao aqui -->
+
+        </div>
     </div>
 
     <script>
@@ -114,6 +118,12 @@ if(isset($_SESSION["user"])){
                     addFormListeners(); // Adiciona os event listeners após o carregamento do conteúdo
                 })
                 .catch(error => console.error('Error loading popup content:', error));
+        }
+
+        function openTable(){
+            let table = document.getElementById("tables");
+            // aind nao foi terminado
+            
         }
 
         function closePopup() {

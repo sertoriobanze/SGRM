@@ -54,7 +54,7 @@ class FiscalController extends Dbh {
             $sql = "SELECT * FROM `fiscal`";
             $stmt = $this->connect()->prepare($sql);
             $stmt->execute();
-            $fiscais = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $fiscais = $stmt->fetchAll();
 
             return $fiscais;
         } catch (PDOException $e) {
