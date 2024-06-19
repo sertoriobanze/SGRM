@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 include_once "../controller/userController.php";
 
 class UserModel extends UserController{
@@ -26,6 +28,9 @@ class UserModel extends UserController{
         $user = $this->checkUser($nome, $senha);
         if ($user) {
             echo "Login bem-sucedido! Bem-vindo, " . $user['nome'];
+            $_SESSION['user'] = $user;
+
+            header("Location: ../pages/dashbord.php");
             return $user;
         } else {
             echo "Nome ou senha incorretos.";

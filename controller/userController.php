@@ -54,7 +54,7 @@ class UserController extends Dbh {
             $sql = "SELECT * FROM `user`";
             $stmt = $this->connect()->prepare($sql);
             $stmt->execute();
-            $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $users = $stmt->fetchAll();
 
             return $users;
         } catch (PDOException $e) {
@@ -66,7 +66,7 @@ class UserController extends Dbh {
     // Método protegido para verificar login do usuário
     protected function checkUser($nome, $senha) {
         try {
-            $sql = "SELECT * FROM `user` WHERE `nome` = ? AND `senha` = ?";
+            $sql = "SELECT * FROM `user` WHERE `usuario` = ? AND `senha` = ?";
             $stmt = $this->connect()->prepare($sql);
             $stmt->execute([$nome, $senha]);
             $user = $stmt->fetch();

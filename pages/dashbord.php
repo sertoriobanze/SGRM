@@ -1,3 +1,25 @@
+<?php
+session_start();
+// session_destroy();
+
+if(isset($_SESSION["user"])){
+    // echo "usuario setado: ";
+    $user = $_SESSION["user"];
+    $nome = $user["nome"];
+    $permissao = $user["permisao"];
+    
+    
+    // var_dump("nome: " . $nome . " permissao: " . $permissao);
+
+    
+
+}else{
+    header("Location: ../pages/login.html");
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,12 +51,12 @@
         <div class="sideContainer">
             <div class="line header">
                 <div class="well">
-                    <h1 class="welcome">Welcome Sertorio</h1>
+                    <h1 class="welcome">Bem Vindo ao SGP</h1>
                     <span class="weldc">Sistema de gestao de seila</span>
                 </div>
                 <div class="info">
-                    <span class="name">Sertorio Banze</span>
-                    <span class="permission">Admin</span>
+                    <span class="name"><?php echo $nome?></span>
+                    <span class="permission"><?php echo $permissao?></span>
                 </div>
             </div>
 
