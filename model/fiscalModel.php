@@ -20,6 +20,12 @@ public function removeFiscal($id) {
 public function listFiscais() {
     return $this->getFiscais();
 }
+public function listFisc() {
+    return $this->getFisc();
+}
+public function listvendedores() {
+    return $this->getvendedores();
+}
 
 
 

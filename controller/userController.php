@@ -77,6 +77,20 @@ class UserController extends Dbh {
             return null;
         }
     }
+protected function checkFiscal($codigoFiscal, $senha) {
+        try {
+            $sql = "SELECT * FROM `fiscal` WHERE `codigoFiscal` = ? AND `senha` = ?";
+            $stmt = $this->connect()->prepare($sql);
+            $stmt->execute([$codigoFiscal, $senha]);
+            $fiscal = $stmt->fetch();
+
+            return $fiscal;
+        } catch (PDOException $e) {
+            echo "Erro: " . $e->getMessage();
+            return null;
+        }
+    }
+    
 
    
 }

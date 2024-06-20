@@ -1,24 +1,28 @@
-<?php
+<?php 
 session_start();
 // session_destroy();
-
+include_once "../model/fiscalModel.php";
+include_once "../model/pagamentosModel.php";
 if(isset($_SESSION["user"])){
-    // echo "usuario setado: ";
     $user = $_SESSION["user"];
     $nome = $user["nome"];
     $permissao = $user["permisao"];
     
-    
-    // var_dump("nome: " . $nome . " permissao: " . $permissao);
+    $fisc = new FiscalModel();
+    $pgmodel = new PagamentosModel();
+    $fiscal = $fisc->listFisc();
+    $totalValor = $pgmodel->listTotalValor();
+    $ValorPE = $pgmodel->listValorPE();
+    $sellers = $fisc->listvendedores();
 
-    
+    // $totalFiscal = $fiscal[0];
+
+   
 
 }else{
     header("Location: ../pages/login.html");
 }
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -66,7 +70,7 @@ if(isset($_SESSION["user"])){
                         <div class="icon"></div>
                         <div class="name">Valor</div>
                     </div>
-                    <div class="money">898 Mzn</div>
+                    <div class="money"><?php echo number_format($totalValor, 2, ',', '.') ?> Mzn</div>
                     <div class="desc">Total Valor</div>
                 </div>
                 <div class="card">
@@ -74,7 +78,7 @@ if(isset($_SESSION["user"])){
                         <div class="icon"></div>
                         <div class="name">Vendedores</div>
                     </div>
-                    <div class="money">390</div>
+                    <div class="money"><?php echo $sellers?></div>
                     <div class="desc">Total Vendedores</div>
                 </div>
                 <div class="card">
@@ -82,7 +86,7 @@ if(isset($_SESSION["user"])){
                         <div class="icon"></div>
                         <div class="name">Fiscais</div>
                     </div>
-                    <div class="money">100</div>
+                    <div class="money"><?php  echo $fiscal;?></div>
                     <div class="desc">Total Fiscais</div>
                 </div>
                 <div class="card">
@@ -90,7 +94,7 @@ if(isset($_SESSION["user"])){
                         <div class="icon"></div>
                         <div class="name">Valor por Receber</div>
                     </div>
-                    <div class="money">30,000 Mzn</div>
+                  <div class="money"><?php echo number_format($ValorPE, 2, ',', '.') ?> Mzn</div>
                     <div class="desc">Total</div>
                 </div>
             </div>
@@ -123,7 +127,7 @@ if(isset($_SESSION["user"])){
         function openTable(){
             let table = document.getElementById("tables");
             // aind nao foi terminado
-            
+
         }
 
         function closePopup() {

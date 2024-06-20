@@ -62,7 +62,44 @@ class FiscalController extends Dbh {
             return [];
         }
     }
+    protected function getvendedores() {
+        try {
+            $sql = "SELECT COUNT(*) AS total_vendedores FROM vendedores;";
+            $stmt = $this->connect()->prepare($sql);
+            $stmt->execute();
+            $fiscais = $stmt->fetch();
 
-   
+            return $fiscais['total_vendedores'];
+        } catch (PDOException $e) {
+            echo "Erro: " . $e->getMessage();
+            return [];
+        }
+    }
+ protected function getFisc() {
+        try {
+            $sql = "SELECT COUNT(*) AS total_fiscais FROM fiscal;";
+            $stmt = $this->connect()->prepare($sql);
+            $stmt->execute();
+            $fiscais = $stmt->fetch();
+
+            return $fiscais['total_fiscais'];
+        } catch (PDOException $e) {
+            echo "Erro: " . $e->getMessage();
+            return [];
+        }
+    }
+//    protected function getTotalValor() {
+//     try {
+//         $sql = "SELECT SUM(valor) AS total_valor FROM pagamentos;";
+//         $stmt = $this->connect()->prepare($sql);
+//         $stmt->execute();
+//         $totalValor = $stmt->fetch();
+
+//         return $totalValor['total_valor'];
+//     } catch (PDOException $e) {
+//         echo "Erro: " . $e->getMessage();
+//         return 0;
+//     }
+// }
 }
 

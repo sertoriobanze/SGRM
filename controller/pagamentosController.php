@@ -1,14 +1,14 @@
 <?php
-
+session_start();
 include_once "../classes/dbh.php";
 
 class PagamentosController extends Dbh {
     // Método protegido para adicionar um pagamento
-    protected function setPagamento($dataPagamento, $valor, $metodoPagamento, $status, $idFiscal, $idComerciante) {
+    protected function setPagamento( $valor, $metodoPagamento, $status, $idFiscal, $idComerciante) {
         try {
-            $sql = "INSERT INTO `pagamentos`(`dataPagamento`, `valor`, `metodoPagamento`, `Status`, `idFiscal`, `idComerciante`) VALUES (?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO `pagamentos`(`dataPagamento`, `valor`, `metodoPagamento`, `Status`, `codFiscal`, `codComerciante`) VALUES (now(), ?, ?, ?, ?, ?)";
             $stmt = $this->connect()->prepare($sql);
-            $pagamento = $stmt->execute([$dataPagamento, $valor, $metodoPagamento, $status, $idFiscal, $idComerciante]);
+            $pagamento = $stmt->execute([ $valor, $metodoPagamento, $status, $idFiscal, $idComerciante]);
 
             if ($pagamento) {
                 echo "Pagamento adicionado com sucesso!";
@@ -19,11 +19,11 @@ class PagamentosController extends Dbh {
     }
 
     // Método protegido para atualizar um pagamento
-    protected function updatePagamento($idPagamento, $dataPagamento, $valor, $metodoPagamento, $status, $idFiscal, $idComerciante) {
+    protected function updatePagamento($idPagamento, $valor, $metodoPagamento, $status, $idFiscal, $idComerciante) {
         try {
-            $sql = "UPDATE `pagamentos` SET `dataPagamento` = ?, `valor` = ?, `metodoPagamento` = ?, `Status` = ?, `idFiscal` = ?, `idComerciante` = ? WHERE `idPagamento` = ?";
+            $sql = "UPDATE `pagamentos` SET `valor` = ?, `metodoPagamento` = ?, `Status` = ?, `codFiscal` = ?, `codComerciante` = ? WHERE `idPagamento` = ?";
             $stmt = $this->connect()->prepare($sql);
-            $result = $stmt->execute([$dataPagamento, $valor, $metodoPagamento, $status, $idFiscal, $idComerciante, $idPagamento]);
+            $result = $stmt->execute([ $valor, $metodoPagamento, $status, $idFiscal, $idComerciante, $idPagamento]);
 
             if ($result) {
                 echo "Pagamento atualizado com sucesso!";
@@ -63,22 +63,53 @@ class PagamentosController extends Dbh {
         }
     }
 
-    // Métodos públicos para chamar os métodos protegidos
-
-    public function addPagamento($dataPagamento, $valor, $metodoPagamento, $status, $idFiscal, $idComerciante) {
-        $this->setPagamento($dataPagamento, $valor, $metodoPagamento, $status, $idFiscal, $idComerciante);
+    protected function saberVendendor($vend){
+        $sql ="SELECT * from vendedores where codigo = ?";
+        try{
+            $stmt = $this->connect()->prepare($sql);
+            $stmt->execute([$vend]);
+            $result = $stmt->fetchAll(); 
+            if($result){
+                return true;
+            }else{
+                $_SESSION['errorMessage'] = "O codigo do Vendedor nao existe";
+             //   header("Location")
+                // echo "nao existe";
+            }
+        }catch(PDOException $e){
+           echo "Erro: " . $e->getMessage();
+            return []; 
+        }
     }
+protected function getTotalValor() {
+    try {
+        $sql = "SELECT SUM(valor) AS total_valor FROM pagamentos;";
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute();
+        $totalValor = $stmt->fetch();
 
-    public function updatePagamentoById($idPagamento, $dataPagamento, $valor, $metodoPagamento, $status, $idFiscal, $idComerciante) {
-        $this->updatePagamento($idPagamento, $dataPagamento, $valor, $metodoPagamento, $status, $idFiscal, $idComerciante);
-    }
-
-    public function deletePagamentoById($idPagamento) {
-        $this->deletePagamento($idPagamento);
-    }
-
-    public function listPagamentos() {
-        return $this->getPagamentos();
+        return $totalValor['total_valor'];
+    } catch (PDOException $e) {
+        echo "Erro: " . $e->getMessage();
+        return 0;
     }
 }
-?>
+protected function getValorPE() {
+    try {
+        $sql = "SELECT SUM(valorEntregar) AS total_valor FROM fiscal;";
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute();
+        $totalValor = $stmt->fetch();
+
+        return $totalValor['total_valor'];
+    } catch (PDOException $e) {
+        echo "Erro: " . $e->getMessage();
+        return 0;
+    }
+}
+
+
+
+   
+}
+

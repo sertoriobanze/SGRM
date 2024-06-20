@@ -1,37 +1,74 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: sans-serif;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
 }
 
-.contFiscal{
-    width: 100%;
-    min-height: 100dvh;
-    display: flex;
+:root {
+  --primry: rgb(38, 34, 100);
+  --secundry: #f7f3ff;
+  --white: rgb(255, 255, 255);
 }
 
-.contFiscal > form{
-    display: flex;
-    margin: auto;
-    width: 300px;
-    box-shadow: rgba(0, 0, 0, 0.579) 0px 0px 5px 0px;
-    padding: 20px;
-    border-radius: 10px;
-} 
+.contFiscal {
+  width: 100%;
+  min-height: 100dvh;
+  display: flex;
+}
 
-form > .logofrm{
-    width: 100%;
-    display: flex;
-    align-items: center;
+.contFiscal > form {
+  display: flex;
+  margin: auto;
+  width: 400px;
+  box-shadow: rgba(0, 0, 0, 0.579) 0px 0px 5px 0px;
+  padding: 20px;
+  border-radius: 10px;
+  flex-direction: column;
+}
+
+form > .logofrm {
+  width: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .line > .logofrm {
-    display: flex;
-  
+  display: flex;
 }
-.line1{
-    width: 100%;
-    display: flex;
-      justify-content: center;
+.line1 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.line {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.col {
+  width: 50%;
+}
+
+.line > input,
+select,
+button {
+  height: 35px;
+  border: 1px solid black;
+  border-radius: 5px;
+  outline: none;
+  padding: 0 10px;
+  margin: 15px 0px;
+}
+
+.line > button {
+  background-color: var(--primry);
+  color: var(--white);
+}
+
+input:focus {
+  border: 2px solid var(--primry);
+}
+select:focus {
+  border: 2px solid var(--primry);
 }

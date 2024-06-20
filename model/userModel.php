@@ -24,17 +24,42 @@ class UserModel extends UserController{
         return $this->getUsers();
     }
 
+    // public function loginUser($nome, $senha) {
+    //     $user = $this->checkUser($nome, $senha);
+    //     if ($user) {
+    //         echo "Login bem-sucedido! Bem-vindo, " . $user['nome'];
+    //         $_SESSION['user'] = $user;
+
+    //         header("Location: ../pages/dashbord.php");
+    //         return $user;
+    //     } else {
+    //         echo "Nome ou senha incorretos.";
+    //         return null;
+    //     }
+    // }
+
     public function loginUser($nome, $senha) {
+        // Tentar autenticar como usuário
         $user = $this->checkUser($nome, $senha);
         if ($user) {
             echo "Login bem-sucedido! Bem-vindo, " . $user['nome'];
             $_SESSION['user'] = $user;
-
             header("Location: ../pages/dashbord.php");
             return $user;
-        } else {
-            echo "Nome ou senha incorretos.";
-            return null;
         }
+
+        // Tentar autenticar como fiscal
+        $fiscal = $this->checkFiscal($nome, $senha);
+        if ($fiscal) {
+            echo "Login bem-sucedido! Bem-vindo, " . $fiscal['nome'];
+            $_SESSION['user'] = $fiscal;
+            header("Location: ../pages/fiscal.php");
+            return $fiscal;
+        }
+
+        // Se não autenticou em nenhuma das tabelas
+        echo "Nome ou senha incorretos.";
+        return null;
     }
+
 }
